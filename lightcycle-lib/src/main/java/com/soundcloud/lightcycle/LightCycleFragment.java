@@ -3,6 +3,7 @@ package com.soundcloud.lightcycle;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,23 +12,23 @@ import android.view.View;
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public abstract class LightCycleFragment<FragmentType extends Fragment> extends Fragment implements LightCycleDispatcher<FragmentLightCycle<FragmentType>> {
 
-    private final FragmentLightCycleDispatcher<FragmentType> lifeCycleDispatcher;
+    private final FragmentLightCycleDispatcher<FragmentType> lightCycleDispatcher;
     private boolean bound;
 
     public LightCycleFragment() {
-        lifeCycleDispatcher = new FragmentLightCycleDispatcher<>();
+        lightCycleDispatcher = new FragmentLightCycleDispatcher<>();
     }
 
     @Override
     public void bind(FragmentLightCycle<FragmentType> lifeCycleComponent) {
-        lifeCycleDispatcher.bind(lifeCycleComponent);
+        lightCycleDispatcher.bind(lifeCycleComponent);
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         bindIfNecessary();
-        lifeCycleDispatcher.onAttach(fragment(), activity);
+        lightCycleDispatcher.onAttach(fragment(), activity);
     }
 
     private void bindIfNecessary() {
@@ -40,72 +41,78 @@ public abstract class LightCycleFragment<FragmentType extends Fragment> extends 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        lifeCycleDispatcher.onCreate(fragment(), savedInstanceState);
+        lightCycleDispatcher.onCreate(fragment(), savedInstanceState);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        lifeCycleDispatcher.onViewCreated(fragment(), view, savedInstanceState);
+        lightCycleDispatcher.onViewCreated(fragment(), view, savedInstanceState);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        lifeCycleDispatcher.onActivityCreated(fragment(), savedInstanceState);
+        lightCycleDispatcher.onActivityCreated(fragment(), savedInstanceState);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        lifeCycleDispatcher.onStart(fragment());
+        lightCycleDispatcher.onStart(fragment());
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        lifeCycleDispatcher.onResume(fragment());
+        lightCycleDispatcher.onResume(fragment());
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return lifeCycleDispatcher.onOptionsItemSelected(fragment(), item);
+        return lightCycleDispatcher.onOptionsItemSelected(fragment(), item);
     }
 
     @Override
     public void onPause() {
-        lifeCycleDispatcher.onPause(fragment());
+        lightCycleDispatcher.onPause(fragment());
         super.onPause();
     }
 
     @Override
     public void onStop() {
-        lifeCycleDispatcher.onStop(fragment());
+        lightCycleDispatcher.onStop(fragment());
         super.onStop();
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        lifeCycleDispatcher.onSaveInstanceState(fragment(), outState);
+        lightCycleDispatcher.onSaveInstanceState(fragment(), outState);
         super.onSaveInstanceState(outState);
     }
 
     @Override
     public void onDestroyView() {
-        lifeCycleDispatcher.onDestroyView(fragment());
+        lightCycleDispatcher.onDestroyView(fragment());
         super.onDestroyView();
     }
 
     @Override
     public void onDestroy() {
-        lifeCycleDispatcher.onDestroy(fragment());
+        lightCycleDispatcher.onDestroy(fragment());
         super.onDestroy();
     }
 
     @Override
     public void onDetach() {
-        lifeCycleDispatcher.onDetach(fragment());
+        lightCycleDispatcher.onDetach(fragment());
         super.onDetach();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        lightCycleDispatcher.onActivityResult(fragment(),requestCode,resultCode,data);
     }
 
     @SuppressWarnings("unchecked")
