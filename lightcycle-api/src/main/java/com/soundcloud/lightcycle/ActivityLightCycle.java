@@ -16,4 +16,5 @@ public interface ActivityLightCycle<T extends Activity> {
     void onSaveInstanceState(T activity, Bundle bundle);
     void onRestoreInstanceState(T activity, Bundle bundle);
     void onDestroy(T activity);
+    void onActivityResult(T activity, int requestCode, int resultCode, Intent data);
 }

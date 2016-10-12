@@ -3,6 +3,7 @@ package com.soundcloud.lightcycle;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -31,6 +32,11 @@ public class DefaultFragmentLightCycle<T extends Fragment> implements FragmentLi
     @Override
     public boolean onOptionsItemSelected(T fragment, MenuItem item) {
         return false;
+    }
+
+    @Override
+    public void onActivityResult(T fragment, int requestCode, int resultCode, Intent data) {
+        /* no-op */
     }
 
     @Override

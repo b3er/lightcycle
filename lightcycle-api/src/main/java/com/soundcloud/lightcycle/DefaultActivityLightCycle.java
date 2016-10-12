@@ -37,4 +37,9 @@ public class DefaultActivityLightCycle<T extends Activity> implements ActivityLi
 
     @Override
     public void onDestroy(T activity) { /* no-op */ }
+
+    @Override
+    public void onActivityResult(T activity, int requestCode, int resultCode, Intent data) {
+        /* no-op */
+    }
 }

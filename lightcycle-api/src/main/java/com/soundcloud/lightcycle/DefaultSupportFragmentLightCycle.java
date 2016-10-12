@@ -1,6 +1,7 @@
 package com.soundcloud.lightcycle;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.MenuItem;
@@ -28,6 +29,11 @@ public class DefaultSupportFragmentLightCycle<T extends Fragment> implements Sup
     @Override
     public boolean onOptionsItemSelected(T fragment, MenuItem item) {
         return false;
+    }
+
+    @Override
+    public void onActivityResult(T activity, int requestCode, int resultCode, Intent data) {
+        /* no-op */
     }
 
     @Override

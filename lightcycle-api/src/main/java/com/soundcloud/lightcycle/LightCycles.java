@@ -102,6 +102,11 @@ public final class LightCycles {
             public void onDestroy(Target activity) {
                 lightCycle.onDestroy(activity);
             }
+
+            @Override
+            public void onActivityResult(Target activity, int requestCode, int resultCode, Intent data) {
+                lightCycle.onActivityResult(activity, requestCode,resultCode,data);
+            }
         };
     }
 
@@ -141,6 +146,11 @@ public final class LightCycles {
             @Override
             public boolean onOptionsItemSelected(Target fragment, MenuItem item) {
                 return lightCycle.onOptionsItemSelected(fragment, item);
+            }
+
+            @Override
+            public void onActivityResult(Target fragment, int requestCode, int resultCode, Intent data) {
+                lightCycle.onActivityResult(fragment, requestCode, resultCode, data);
             }
 
             @Override
@@ -212,6 +222,11 @@ public final class LightCycles {
             @Override
             public boolean onOptionsItemSelected(Target fragment, MenuItem item) {
                 return lightCycle.onOptionsItemSelected(fragment, item);
+            }
+
+            @Override
+            public void onActivityResult(Target fragment, int requestCode, int resultCode, Intent data) {
+                lightCycle.onActivityResult(fragment,requestCode,resultCode,data);
             }
 
             @Override
