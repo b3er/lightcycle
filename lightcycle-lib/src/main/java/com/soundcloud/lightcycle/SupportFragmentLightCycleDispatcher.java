@@ -1,6 +1,7 @@
 package com.soundcloud.lightcycle;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -114,6 +115,13 @@ public class SupportFragmentLightCycleDispatcher<T extends Fragment>
     public void onDetach(T fragment) {
         for (SupportFragmentLightCycle<T> component : fragmentLightCycles) {
             component.onDetach(fragment);
+        }
+    }
+
+    @Override
+    public void onActivityResult(T fragment, int requestCode, int resultCode, Intent data) {
+        for (SupportFragmentLightCycle<T> component : fragmentLightCycles) {
+            component.onActivityResult(fragment,requestCode,resultCode,data);
         }
     }
 }

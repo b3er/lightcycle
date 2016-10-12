@@ -85,8 +85,8 @@ public abstract class LightCycleAppCompatActivity<ActivityType extends LightCycl
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        lightCycleDispatcher.onActivityResult(activity(),requestCode,resultCode,data);
         super.onActivityResult(requestCode, resultCode, data);
+        lightCycleDispatcher.onActivityResult(activity(),requestCode,resultCode,data);
     }
 
     @SuppressWarnings("unchecked")
