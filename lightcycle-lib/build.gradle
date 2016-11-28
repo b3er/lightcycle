@@ -40,7 +40,6 @@ dependencies {
   compile deps.appcompat_v7
   compile deps.preference_v7
   compile deps.support_annotations
-
   testCompile deps.mockito
   testCompile deps.junit
 }

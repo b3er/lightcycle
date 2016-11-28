@@ -5,7 +5,7 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:1.5.0'
+    classpath 'com.android.tools.build:gradle:2.+'
     classpath 'com.netflix.nebula:gradle-extra-configurations-plugin:2.2.0'
   }
 }
@@ -26,7 +26,7 @@ ext {
   minSdkVersion = 8
   targetSdkVersion = 23
   compileSdkVersion = 23
-  buildToolsVersion = "24.0.1"
+  buildToolsVersion = "25.0.0"
   sourceCompatibilityVersion = JavaVersion.VERSION_1_7
   targetCompatibilityVersion = JavaVersion.VERSION_1_7
 }
