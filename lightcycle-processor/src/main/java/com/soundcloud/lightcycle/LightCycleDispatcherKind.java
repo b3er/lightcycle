@@ -105,7 +105,7 @@ enum LightCycleDispatcherKind {
     };
 
     private static String typeArgumentAsString(String lightCycleType, String componentType) {
-        return String.format("%s.%s<%s>", LightCycleProcessor.LIB_PACKAGE, lightCycleType, componentType);
+        return String.format("%s.%s", LightCycleProcessor.LIB_PACKAGE, lightCycleType);
     }
 
     abstract boolean matches(Name name);

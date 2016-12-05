@@ -4,6 +4,7 @@ import com.squareup.javapoet.CodeBlock;
 
 import javax.annotation.processing.Messager;
 import javax.lang.model.element.Element;
+import javax.lang.model.element.ElementKind;
 import javax.lang.model.type.DeclaredType;
 import javax.lang.model.type.TypeMirror;
 import javax.tools.Diagnostic;
@@ -47,14 +48,14 @@ abstract class LightCycleBinder {
             }
 
             private CodeBlock generateLiftAndBind(Element element, String liftedName, List<? extends TypeMirror> typeArguments) {
-                final String lightCycleLiftedType = dispatcherKind.toTypeName(typeArguments.get(0).toString());
+                final String lightCycleLiftedType = typeArguments.get(0).toString().replaceAll("<.+>","");
                 return CodeBlock.builder()
                         .addStatement("final $N $N = $N($N.$N)",
                                 lightCycleLiftedType,
                                 liftedName,
                                 METHOD_LIFT_NAME,
                                 METHOD_BIND_ARGUMENT_NAME,
-                                element.getSimpleName())
+                                element.getKind() == ElementKind.FIELD ? element.getSimpleName() : (element.getSimpleName() + "()"))
                         .addStatement("$N.$N($N)", METHOD_BIND_ARGUMENT_NAME, METHOD_BIND_NAME, liftedName)
                         .build();
             }
